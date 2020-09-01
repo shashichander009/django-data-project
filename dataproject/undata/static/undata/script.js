@@ -8,14 +8,29 @@ function prepIndiaChart() {
 
   var year = document.getElementById("year");
   var range = document.getElementById("range");
+  var country = document.getElementById("country");
 
   var yearValue = year.options[year.selectedIndex].value;
   var rangeValue = range.options[range.selectedIndex].value;
+  var countryValue = country.options[country.selectedIndex].value;
 
-  console.log(yearValue);
-  console.log(rangeValue);
+  var endYear;
 
-  var url = "prob1?year=" + yearValue + "&&range=" + rangeValue;
+  if (rangeValue != "1") {
+    endYear = parseInt(yearValue) + parseInt(rangeValue) - 1;
+  } else {
+    endYear = yearValue;
+  }
+
+  var url =
+    "prob1response?year=" +
+    yearValue +
+    "&&range=" +
+    rangeValue +
+    "&&country=" +
+    countryValue;
+
+  console.log(countryValue);
 
   fetch(url)
     .then(res => {
@@ -31,7 +46,7 @@ function prepIndiaChart() {
           type: "column"
         },
         title: {
-          text: "India's Population Over the Years"
+          text: countryValue + "'s Population Over the Years"
         },
         subtitle: {
           text: `Source: <a href='https://datahub.io/core/
@@ -62,7 +77,7 @@ function prepIndiaChart() {
         },
         series: [
           {
-            name: "Year (1950-2015)",
+            name: "Year (" + yearValue + "-" + endYear + ")",
             data: indiaData
           }
         ]

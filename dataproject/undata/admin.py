@@ -5,3 +5,4 @@ from django.contrib import admin
 from .models import RegionData, Union
 
 admin.site.register(RegionData)
+admin.site.register(Union)

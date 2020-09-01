@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>ANSWER</title>
+    <title>UN Data PROJECT</title>
 
     <link rel="stylesheet" href="{% static 'undata/css/main.css' %}">
     <script type="text/javascript" src="{% static 'undata/script.js' %}"></script>
@@ -18,25 +18,33 @@
 
 <body>
 
-    <h4 class="heading">PROBLEM 1</h4>
+    <h4 class="heading">Population Data Analysis</h4>
 
     <!--  buttons for navigation -->
 
     <form method="POST" action="prepIndiaChart()">
-        <select name="year">
+
+        <select id="country">
+            {% for country in countries %}
+            <option value="{{ country }}">{{ country }}</option>
+            {% endfor %}
+        </select>
+
+        <select id="year">
             {% for item in object %}
             <option value="{{ item.year }}">{{ item.year }}</option>
             {% endfor %}
         </select>
+
+        <select id="range">
+            {% for entry in range %}
+            <option value="{{ entry }}">{{ entry }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="button" onclick="prepIndiaChart()">Display Chart</button>
     </form>
 
-
-    <button type="button" onclick="prepIndiaChart()">India Chart</button>
-    <!-- <button type="button" onclick="prepAseanChart()">ASEAN CHART</button>
-    <button type="button" onclick="prepSaarcChart()">SAARC CHART</button>
-    <button type="button" onclick="prepAseanGroupChart()">ASEAN Group CHART</button> -->
-
-    <!--  container to show charts -->
 
     <div id="container"></div>
 
