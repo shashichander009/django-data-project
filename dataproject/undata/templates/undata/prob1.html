@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>ANSWER</title>
+
+    <link rel="stylesheet" href="{% static 'undata/css/main.css' %}">
+    <script type="text/javascript" src="{% static 'undata/script.js' %}"></script>
+    <script src=" https://code.highcharts.com/highcharts.js"> </script>
+</head>
+
+<body>
+
+    <h4 class="heading">PROBLEM 1</h4>
+
+    <!--  buttons for navigation -->
+
+    <form method="POST" action="prepIndiaChart()">
+        <select name="year">
+            {% for item in object %}
+            <option value="{{ item.year }}">{{ item.year }}</option>
+            {% endfor %}
+        </select>
+    </form>
+
+
+    <button type="button" onclick="prepIndiaChart()">India Chart</button>
+    <!-- <button type="button" onclick="prepAseanChart()">ASEAN CHART</button>
+    <button type="button" onclick="prepSaarcChart()">SAARC CHART</button>
+    <button type="button" onclick="prepAseanGroupChart()">ASEAN Group CHART</button> -->
+
+    <!--  container to show charts -->
+
+    <div id="container"></div>
+
+</body>
+
+</html>
