@@ -55,27 +55,34 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
-        for union_entry in UNION_DICT:
-            country_ids = UNION_DICT[union_entry]
-            for country in country_ids:
-                union = Union()
-                union.name = union_entry
-                union.country_id = country
-                union.save()
+        unionsize = Union.objects.all().count()
 
-        print("Union Data Saved")
+        if not unionsize:
+            for union_entry in UNION_DICT:
+                country_ids = UNION_DICT[union_entry]
+                for country in country_ids:
+                    union = Union()
+                    union.name = union_entry
+                    union.country_id = country
+                    union.save()
+            print("Union Data Saved")
+        else:
+            print("Union Data Already Copied")
 
-        with open('undata/rawdata/data.csv', 'r') as csv_file:
+        regionsize = RegionData.objects.all().count()
 
-            csv_reader = csv.reader(csv_file)
+        if not regionsize:
+            with open('undata/rawdata/data.csv', 'r') as csv_file:
+                csv_reader = csv.reader(csv_file)
+                next(csv_reader)
+                for line in csv_reader:
+                    regiondata = RegionData()
+                    regiondata.country = line[0]
+                    regiondata.code = line[1]
+                    regiondata.year = line[2]
+                    regiondata.population = line[3]
+                    regiondata.save()
+                print("Region Data Saved")
 
-            next(csv_reader)
-
-            for line in csv_reader:
-                regiondata = RegionData()
-                regiondata.country = line[0]
-                regiondata.code = line[1]
-                regiondata.year = line[2]
-                regiondata.population = line[3]
-                regiondata.save()
-            print("Region Data Saved")
+        else:
+            print("Region Data Already Copied")

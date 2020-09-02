@@ -11,6 +11,8 @@ def problem1_view(request):
 
     countries = []
 
+    print(RegionData.objects.all().count())
+
     years = RegionData.objects.filter(country='India').filter(year__lte=2006)
 
     countryqry = RegionData.objects.order_by(

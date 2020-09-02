@@ -22,7 +22,7 @@ def problem1_response(request):
             population_in_crores = round(row.population / 10000, 2)
             response_data[yearkey] = float(population_in_crores)
 
-        return JsonResponse(response_data, safe=False)
+        return JsonResponse(response_data)
     else:
         print("Invalid Request Method")
 
@@ -49,7 +49,7 @@ def problem2_response(request):
             population_in_crores = round(row.population / 10000, 2)
             response_data[row.country] = float(population_in_crores)
 
-        return JsonResponse(response_data, safe=False)
+        return JsonResponse(response_data)
     else:
         print("Invalid Request Method")
 
@@ -83,7 +83,7 @@ def problem3_response(request):
             population_in_crores = round(row['sum'] / 10000, 2)
             response_data[row['year']] = float(population_in_crores)
 
-        return JsonResponse(response_data, safe=False)
+        return JsonResponse(response_data)
 
     else:
         print("Invalid Request Method")
@@ -122,7 +122,7 @@ def problem4_response(request):
                 nation_object = response_data[country]
                 nation_object[current_year] = population_in_crores
 
-        return JsonResponse(response_data, safe=False)
+        return JsonResponse(response_data)
 
     else:
         print("Invalid Request Method")
