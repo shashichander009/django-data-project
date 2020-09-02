@@ -1,15 +1,15 @@
-"use strict";
+/*jshint esversion: 6 */
 
 function problem1Chart() {
-  var year = document.getElementById("year");
-  var range = document.getElementById("range");
-  var country = document.getElementById("country");
+  var year, range, country, yearValue, rangeValue, countryValue, endYear;
 
-  var yearValue = year.options[year.selectedIndex].value;
-  var rangeValue = range.options[range.selectedIndex].value;
-  var countryValue = country.options[country.selectedIndex].value;
+  year = document.getElementById("year");
+  range = document.getElementById("range");
+  country = document.getElementById("country");
 
-  var endYear;
+  yearValue = year.options[year.selectedIndex].value;
+  rangeValue = range.options[range.selectedIndex].value;
+  countryValue = country.options[country.selectedIndex].value;
 
   if (rangeValue != "1") {
     endYear = parseInt(yearValue) + parseInt(rangeValue) - 1;
@@ -25,24 +25,20 @@ function problem1Chart() {
     "&&country=" +
     countryValue;
 
-  console.log(countryValue);
-
   fetch(url)
     .then(res => {
       return res.json();
     })
 
-    .then(indiaData => {
-      console.log(indiaData);
-      indiaData = Object.entries(indiaData);
-      console.log(indiaData);
+    .then(responseData => {
+      responseData = Object.entries(responseData);
 
       var titleText = countryValue + "'s Population Over the Years";
 
       var seriesArray = [
         {
           name: "Year (" + yearValue + "-" + endYear + ")",
-          data: indiaData
+          data: responseData
         }
       ];
 
@@ -59,8 +55,6 @@ function problem2Chart() {
   var groupValue = group.options[group.selectedIndex].value;
 
   var url = "prob2response?year=" + yearValue + "&&group=" + groupValue;
-
-  console.log(url);
 
   fetch(url)
     .then(response => {
