@@ -1,4 +1,3 @@
-from undata.models import Union
 import csv
 from django.core.management.base import BaseCommand
 from undata.models import RegionData, Union
