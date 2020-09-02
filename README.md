@@ -41,9 +41,7 @@ dataproject/dataproject/settings.py
 
 Search for DATABASES and replace the following values and save it. 
 
-'NAME': '__________',
-'USER': '_________',
-'PASSWORD': '________',
+NAME, USER and PASSWORD
 
 Once you are done, come back to following directory where you can see manage.py
 
