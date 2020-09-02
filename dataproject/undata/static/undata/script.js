@@ -1,11 +1,6 @@
 "use strict";
 
-//  This function prepares a Bar Plot of India's population vs. years.
-
-function prepIndiaChart() {
-  // var year = get
-  // var range =
-
+function problem1Chart() {
   var year = document.getElementById("year");
   var range = document.getElementById("range");
   var country = document.getElementById("country");
@@ -41,54 +36,22 @@ function prepIndiaChart() {
       console.log(indiaData);
       indiaData = Object.entries(indiaData);
       console.log(indiaData);
-      Highcharts.chart("container", {
-        chart: {
-          type: "column"
-        },
-        title: {
-          text: countryValue + "'s Population Over the Years"
-        },
-        subtitle: {
-          text: `Source: <a href='https://datahub.io/core/
-          population-growth-estimates-and-projections/r/
-          population-estimates.csv'>United Nations</a>`
-        },
-        xAxis: {
-          type: "category",
-          labels: {
-            rotation: -45,
-            style: {
-              fontSize: "10px",
-              fontFamily: "Verdana, sans-serif"
-            }
-          }
-        },
-        yAxis: {
-          min: 0,
-          title: {
-            text: "Population (crores)"
-          }
-        },
-        legend: {
-          enabled: true
-        },
-        tooltip: {
-          pointFormat: "Population : <b>{point.y:.1f} crores</b>"
-        },
-        series: [
-          {
-            name: "Year (" + yearValue + "-" + endYear + ")",
-            data: indiaData
-          }
-        ]
-      });
+
+      var titleText = countryValue + "'s Population Over the Years";
+
+      var seriesArray = [
+        {
+          name: "Year (" + yearValue + "-" + endYear + ")",
+          data: indiaData
+        }
+      ];
+
+      prepCharts(titleText, seriesArray);
     })
     .catch(error => console.log(error));
 }
 
-//  This function prepares the Bar Chart of population of ASEAN countries in 2014
-
-function prepAseanChart() {
+function problem2Chart() {
   var year = document.getElementById("year");
   var group = document.getElementById("group");
 
@@ -111,57 +74,28 @@ function prepAseanChart() {
 
         if (country == "Viet Nam") aseanData[i][0] = "VietNam";
         if (country == "Brunei Darussalam") aseanData[i][0] = "Brunei";
+        if (country == "Russian Federation") aseanData[i][0] = "Russia";
+        if (country == "United States of America") aseanData[i][0] = "USA";
         if (country == "Lao People's Democratic Republic")
           aseanData[i][0] = "Laos";
       }
 
-      Highcharts.chart("container", {
-        chart: {
-          type: "column"
-        },
-        title: {
-          text: "ASEAN Countries Population in 2014"
-        },
-        subtitle: {
-          text: `Source: <a href='https://datahub.io/core/
-          population-growth-estimates-and-projections/r/
-          population-estimates.csv'>United Nations</a>`
-        },
-        xAxis: {
-          type: "category",
-          labels: {
-            style: {
-              fontSize: "13px",
-              fontFamily: "Verdana, sans-serif"
-            }
-          }
-        },
-        yAxis: {
-          min: 0,
-          title: {
-            text: "Population (crores)"
-          }
-        },
-        legend: {
-          enabled: true
-        },
-        tooltip: {
-          pointFormat: "Population : <b>{point.y:.2f} crores</b>"
-        },
-        series: [
-          {
-            name: "Countries",
-            data: aseanData
-          }
-        ]
-      });
+      var titleText =
+        groupValue + " Countries Population in the Year " + yearValue;
+
+      var seriesArray = [
+        {
+          name: "Countries",
+          data: aseanData
+        }
+      ];
+
+      prepCharts(titleText, seriesArray);
     })
     .catch(error => console.log(error));
 }
 
-//  TOTAL population of SAARC countries over the past years
-
-function prepSaarcChart() {
+function problem3Chart() {
   var year = document.getElementById("year");
   var group = document.getElementById("group");
   var range = document.getElementById("range");
@@ -192,54 +126,62 @@ function prepSaarcChart() {
     })
     .then(saarcData => {
       saarcData = Object.entries(saarcData);
-      Highcharts.chart("container", {
-        chart: {
-          type: "column"
-        },
-        title: {
-          text: "SAARC Countries Population Over the Years"
-        },
-        subtitle: {
-          text: `Source: <a href='https://datahub.io/core/
-          population-growth-estimates-and-projections/r/
-          population-estimates.csv'>United Nations</a>`
-        },
-        xAxis: {
-          type: "category",
-          labels: {
-            rotation: -45,
-            style: {
-              fontSize: "10px",
-              fontFamily: "Verdana, sans-serif"
-            }
-          }
-        },
-        yAxis: {
-          min: 0,
-          title: {
-            text: "Population (crores)"
-          }
-        },
-        legend: {
-          enabled: true
-        },
-        tooltip: {
-          pointFormat: "Population : <b>{point.y:.2f} crores</b>"
-        },
-        series: [
-          {
-            name: "Year (1950-2015)",
-            data: saarcData
-          }
-        ]
-      });
+
+      var titleText =
+        groupValue + " Countries Population in the Year " + yearValue;
+
+      var seriesArray = [
+        {
+          name: "Year (" + yearValue + "-" + endYear + ")",
+          data: saarcData
+        }
+      ];
+
+      prepCharts(titleText, seriesArray);
     })
     .catch(error => console.log(error));
 }
 
-//  Grouped Bar Chart - ASEAN population vs. years
+function prepCharts(titleText, seriesArray) {
+  Highcharts.chart("container", {
+    chart: {
+      type: "column"
+    },
+    title: {
+      text: titleText
+    },
+    subtitle: {
+      text: `Source: <a href='https://datahub.io/core/
+          population-growth-estimates-and-projections/r/
+          population-estimates.csv'>United Nations</a>`
+    },
+    xAxis: {
+      type: "category",
+      labels: {
+        rotation: -45,
+        style: {
+          fontSize: "10px",
+          fontFamily: "Verdana, sans-serif"
+        }
+      }
+    },
+    yAxis: {
+      min: 0,
+      title: {
+        text: "Population (crores)"
+      }
+    },
+    legend: {
+      enabled: true
+    },
+    tooltip: {
+      pointFormat: "Population : <b>{point.y:.1f} crores</b>"
+    },
+    series: seriesArray
+  });
+}
 
-function prepAseanGroupChart() {
+function problem4Chart() {
   var year = document.getElementById("year");
   var group = document.getElementById("group");
 
@@ -247,8 +189,6 @@ function prepAseanGroupChart() {
   var groupValue = group.options[group.selectedIndex].value;
 
   var url = "prob4response?year=" + yearValue + "&&group=" + groupValue;
-
-  console.log(url);
 
   fetch(url)
     .then(response => {
@@ -271,6 +211,8 @@ function prepAseanGroupChart() {
         //changing the name of countries for better display
         if (country == "Viet Nam") country = "VietNam";
         if (country == "Brunei Darussalam") country = "Brunei";
+        if (country == "Russian Federation") country = "Russia";
+        if (country == "United States of America") country = "USA";
         if (country == "Lao People's Democratic Republic") country = "Laos";
 
         // each element of seriesArray is of the below format object
@@ -283,12 +225,15 @@ function prepAseanGroupChart() {
         seriesArray.push(countryObj);
       }
 
+      var titleText =
+        groupValue + " Countries Population in the Year " + yearValue;
+
       Highcharts.chart("container", {
         chart: {
           type: "column"
         },
         title: {
-          text: "ASEAN Population (2011-2015)"
+          text: titleText
         },
         subtitle: {
           text: `Source: <a href='https://datahub.io/core/

@@ -256,8 +256,7 @@ option {
 
 .home-button {
   color: blue;
-  margin: 50rem;
-  margin-top: 2rem;
+  margin: 20rem 55rem;
 }
 
 .home-button:hover {
