@@ -1,52 +1,30 @@
-{% load static %}
+{% extends "undata/base.html" %}
 
-<!DOCTYPE html>
-<html lang="en">
+{% block content %}
 
+{% include 'undata/nav.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<h5><u>Problem 4 - Data Analysis</u></h5>
 
-    <title>UN Data PROJECT</title>
+<form>
+    <label for="group">Grouping </label>
 
-    <link rel="stylesheet" href="{% static 'undata/css/main.css' %}">
-    <script type="text/javascript" src="{% static 'undata/script.js' %}"></script>
-    <script src=" https://code.highcharts.com/highcharts.js"> </script>
-</head>
+    <select id="group">
+        {% for group in groups %}
+        <option value="{{ group }}">{{ group|upper }}</option>
+        {% endfor %}
+    </select>
 
-<body>
-    <!-- 
-    <h4 class="heading">Population Data Analysis</h4> -->
+    <label for="year">Start Year </label>
 
-    <!--  buttons for navigation -->
+    <select id="year">
+        {% for item in years %}
+        <option value="{{ item.year }}">{{ item.year }}</option>
+        {% endfor %}
+    </select>
 
-    <form method="POST" action="prepIndiaChart()">
+    <button type="button" onclick="prepAseanGroupChart()">Display Chart</button>
 
-        <label for="group">Grouping </label>
+</form>
 
-        <select id="group">
-            {% for group in groups %}
-            <option value="{{ group }}">{{ group|upper }}</option>
-            {% endfor %}
-        </select>
-
-        <label for="year">Start Year </label>
-
-        <select id="year">
-            {% for item in years %}
-            <option value="{{ item.year }}">{{ item.year }}</option>
-            {% endfor %}
-        </select>
-
-
-        <button type="button" onclick="prepAseanGroupChart()">Display Chart</button>
-    </form>
-
-
-    <div id="container"></div>
-
-</body>
-
-</html>
+{% endblock %}

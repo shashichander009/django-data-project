@@ -19,7 +19,3 @@ class RegionData(models.Model):
 
     def __str__(self):
         return 'Population ('+self.country+','+str(self.year) + ')'
-
-    # def get_absolute_url(self):
-    #     # return f"/product/{self.id}/"
-    #     return reverse("products:product-detail", kwargs={"id": self.id})

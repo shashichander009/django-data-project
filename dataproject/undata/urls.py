@@ -6,6 +6,8 @@ from undata.response import problem1_response, problem2_response, problem3_respo
 app_name = 'undata'
 
 urlpatterns = [
+    path('', problem1_view),
+
     path('prob1', problem1_view, name='prob1'),
     path('prob1response', problem1_response),
 

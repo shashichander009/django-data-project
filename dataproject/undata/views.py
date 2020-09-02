@@ -7,9 +7,13 @@ from django.db.models import Sum
 # Create your views here.
 
 
+def home_view(request):
+    return render(request, "undata/home.html")
+
+
 def problem1_view(request):
 
-    obj = RegionData.objects.filter(country='India').filter(year__lte=2006)
+    years = RegionData.objects.filter(country='India').filter(year__lte=2006)
 
     countrieslist = list(
         RegionData.objects.order_by('country').values_list('country').distinct())
@@ -19,12 +23,12 @@ def problem1_view(request):
         finalList.append(country[0])
 
     context = {
-        "object": obj,
+        "years": years,
         "range": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
         "countries": finalList
     }
 
-    return render(request, "undata/index.html", context)
+    return render(request, "undata/prob1.html", context)
 
 
 def problem2_view(request):
@@ -83,4 +87,3 @@ def problem4_view(request):
     }
 
     return render(request, "undata/prob4.html", context)
-
