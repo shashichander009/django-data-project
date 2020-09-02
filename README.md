@@ -35,40 +35,54 @@ pip install -r requirements.txt
 
 ### DATABASE SETTING UP
 
-Create a postgres Database and replace the link of SQLALCHEMY_DATABASE_URI in config.py folder. It should be of the format 
+Create a postgres Database and go the follow file 
 
-postgresql://username:password@localhost:5432/db-name
+dataproject/dataproject/settings.py
 
-Once you are done, run the following command 
+Search for DATABASES and replace the following values and save it. 
+
+'NAME': '__________',
+'USER': '_________',
+'PASSWORD': '________',
+
+Once you are done, come back to following directory where you can see manage.py
+
+Run the following command
 
 ```bash
-flask db upgrade
+python manage.py migrate
 ```
-This will create Admin and Employee DB in your database
+This will create your database with necessary tables as well as Union and Region Data. 
 
-### PROJECT USAGE
+### INSERTING DATA INTO DATABASE
 
-Finally, after all the steps run the following command
+Now run the following command, it will add data into your database. Please note that this make take approx 1-2 minutes. Keep patience. 
 
 ```bash
-flask run
+python manage.py insertdata
 ```
 
-Go to the URL : http://127.0.0.1:5000/  to view the project
+### LIVE PROJECT 
+
+Now everything is set up, you can view the project live by running the following command 
+
+```bash
+python manage.py runserver
+```
+Go to the URL : http://127.0.0.1:8000/  to view the project
+
+You can stop the server by pressing Ctrl + C 
+
+### OPTIONAL STEP
+
+If you want to check the database, you can create a superuser and login into django admin 
+
+```bash
+python manage.py createsuperuser
+```
+
+Go to the URL : http://127.0.0.1:8000/admin/  and use your credentials to log in. 
 
 
-### First Steps at the Website
-
-Click Sign Up button and create an Admin. 
-
-Now go to add Employee and create an employee. Important points 
- *  Phone Number should be 10 digits 
- *  Salary can't be zero
-
-On the home page, you can find employee list. 
-
-Click on any Employee to view Details of Employee
-
-If you are logged in you can edit and delete employees. 
-
+Thank you
 
