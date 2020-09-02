@@ -35,15 +35,13 @@ pip install -r requirements.txt
 
 ### DATABASE SETTING UP
 
-Create a postgres Database and go the follow file 
+Create a postgres Database and go to the .env file. 
 
-dataproject/dataproject/settings.py
+Add your database credentials here by updating the values of these. 
 
-Search for DATABASES and replace the following values and save it. 
+DATABASE,USERNAME and PASSWORD
 
-NAME, USER and PASSWORD
-
-Once you are done, come back to following directory where you can see manage.py
+Once you are done, go to the dataproject directory where you can see manage.py
 
 Run the following command
 
