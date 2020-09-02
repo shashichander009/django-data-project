@@ -89,7 +89,17 @@ function prepIndiaChart() {
 //  This function prepares the Bar Chart of population of ASEAN countries in 2014
 
 function prepAseanChart() {
-  fetch("/backend/json/data2.json")
+  var year = document.getElementById("year");
+  var group = document.getElementById("group");
+
+  var yearValue = year.options[year.selectedIndex].value;
+  var groupValue = group.options[group.selectedIndex].value;
+
+  var url = "prob2response?year=" + yearValue + "&&group=" + groupValue;
+
+  console.log(url);
+
+  fetch(url)
     .then(response => {
       return response.json();
     })
@@ -152,7 +162,31 @@ function prepAseanChart() {
 //  TOTAL population of SAARC countries over the past years
 
 function prepSaarcChart() {
-  fetch("/backend/json/data3.json")
+  var year = document.getElementById("year");
+  var group = document.getElementById("group");
+  var range = document.getElementById("range");
+
+  var yearValue = year.options[year.selectedIndex].value;
+  var groupValue = group.options[group.selectedIndex].value;
+  var rangeValue = range.options[range.selectedIndex].value;
+
+  var endYear;
+
+  if (rangeValue != "1") {
+    endYear = parseInt(yearValue) + parseInt(rangeValue) - 1;
+  } else {
+    endYear = yearValue;
+  }
+
+  var url =
+    "prob3response?year=" +
+    yearValue +
+    "&&range=" +
+    rangeValue +
+    "&&group=" +
+    groupValue;
+
+  fetch(url)
     .then(response => {
       return response.json();
     })
@@ -206,7 +240,17 @@ function prepSaarcChart() {
 //  Grouped Bar Chart - ASEAN population vs. years
 
 function prepAseanGroupChart() {
-  fetch("/backend/json/data4.json")
+  var year = document.getElementById("year");
+  var group = document.getElementById("group");
+
+  var yearValue = year.options[year.selectedIndex].value;
+  var groupValue = group.options[group.selectedIndex].value;
+
+  var url = "prob4response?year=" + yearValue + "&&group=" + groupValue;
+
+  console.log(url);
+
+  fetch(url)
     .then(response => {
       return response.json();
     })

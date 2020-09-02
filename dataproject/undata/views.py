@@ -3,6 +3,7 @@ from .models import Union, RegionData
 from django.http import JsonResponse
 import json
 import simplejson
+from django.db.models import Sum
 # Create your views here.
 
 
@@ -26,25 +27,60 @@ def problem1_view(request):
     return render(request, "undata/index.html", context)
 
 
-def problem1_response(request):
+def problem2_view(request):
 
-    if request.method == 'POST':
-        print(request.POST)
+    years = RegionData.objects.filter(country='India')
 
-    if request.method == 'GET':
-        india_data = {}
-        year = request.GET["year"]
-        year_range = request.GET["range"]
-        country = request.GET["country"]
-        end_year = int(year)+int(year_range)-1
-        print(end_year)
+    countrieslist = list(
+        Union.objects.order_by('name').values_list('name').distinct())
+    finalList = []
 
-        qry = RegionData.objects.filter(
-            country=country).filter(year__gte=year).filter(year__lte=end_year)
+    for country in countrieslist:
+        finalList.append(country[0])
 
-        for row in qry.all():
-            yearkey = int(row.year)
-            population_in_crores = round(row.population / 10000, 2)
-            india_data[yearkey] = float(population_in_crores)
+    context = {
+        "years": years,
+        "countries": finalList
+    }
 
-        return JsonResponse(india_data, safe=False)
+    return render(request, "undata/prob2.html", context)
+
+
+def problem3_view(request):
+
+    years = RegionData.objects.filter(country='India').filter(year__lte=2006)
+
+    groups = list(
+        Union.objects.order_by('name').values_list('name').distinct())
+    finalList = []
+
+    for group in groups:
+        finalList.append(group[0])
+
+    context = {
+        "years": years,
+        "range": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        "groups": finalList
+    }
+
+    return render(request, "undata/prob3.html", context)
+
+
+def problem4_view(request):
+
+    years = RegionData.objects.filter(country='India').filter(year__lte=2010)
+
+    groups = list(
+        Union.objects.order_by('name').values_list('name').distinct())
+    finalList = []
+
+    for group in groups:
+        finalList.append(group[0])
+
+    context = {
+        "years": years,
+        "groups": finalList
+    }
+
+    return render(request, "undata/prob4.html", context)
+

@@ -24,15 +24,15 @@
 
     <form method="POST" action="prepIndiaChart()">
 
-        <label for="country">Country </label>
+        <label for="group">Grouping </label>
 
-        <select id="country">
-            {% for country in countries %}
-            <option value="{{ country }}">{{ country }}</option>
+        <select id="group">
+            {% for group in countries %}
+            <option value="{{ group }}">{{ group|upper }}</option>
             {% endfor %}
         </select>
 
-        <label for="year">Start Year </label>
+        <label for="year">Year </label>
 
         <select id="year">
             {% for item in years %}
@@ -41,15 +41,8 @@
         </select>
 
 
-        <label for="range">Range </label>
 
-        <select id="range">
-            {% for entry in range %}
-            <option value="{{ entry }}">{{ entry }}</option>
-            {% endfor %}
-        </select>
-
-        <button type="button" onclick="prepIndiaChart()">Display Chart</button>
+        <button type="button" onclick="prepAseanChart()">Display Chart</button>
     </form>
 
 

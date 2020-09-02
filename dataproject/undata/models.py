@@ -7,6 +7,9 @@ class Union(models.Model):
     name = models.CharField(max_length=200)
     country_id = models.IntegerField()
 
+    def __str__(self):
+        return 'Union ('+self.name+','+str(self.country_id) + ')'
+
 
 class RegionData(models.Model):
     country = models.CharField(max_length=200)

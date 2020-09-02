@@ -17,24 +17,30 @@
 </head>
 
 <body>
-
-    <h4 class="heading">Population Data Analysis</h4>
+    <!-- 
+    <h4 class="heading">Population Data Analysis</h4> -->
 
     <!--  buttons for navigation -->
 
     <form method="POST" action="prepIndiaChart()">
 
-        <select id="country">
-            {% for country in countries %}
-            <option value="{{ country }}">{{ country }}</option>
+        <label for="group">Grouping </label>
+
+        <select id="group">
+            {% for group in groups %}
+            <option value="{{ group }}">{{ group|upper }}</option>
             {% endfor %}
         </select>
 
+        <label for="year">Start Year </label>
+
         <select id="year">
-            {% for item in object %}
+            {% for item in years %}
             <option value="{{ item.year }}">{{ item.year }}</option>
             {% endfor %}
         </select>
+
+        <label for="range">Range </label>
 
         <select id="range">
             {% for entry in range %}
@@ -42,7 +48,7 @@
             {% endfor %}
         </select>
 
-        <button type="button" onclick="prepIndiaChart()">Display Chart</button>
+        <button type="button" onclick="prepSaarcChart()">Display Chart</button>
     </form>
 
 
