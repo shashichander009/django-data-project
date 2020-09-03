@@ -122,7 +122,12 @@ function problem3Chart() {
       saarcData = Object.entries(saarcData);
 
       var titleText =
-        groupValue + " Countries Population in the Year " + yearValue;
+        groupValue +
+        " Countries Population During the Year(s) " +
+        yearValue +
+        "-" +
+        endYear +
+        "";
 
       var seriesArray = [
         {
