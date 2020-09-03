@@ -42,8 +42,11 @@ Find the .env file.
 Add your database credentials here by updating the values of these values 
 
 DATABASE : Write your DB Name here 
-DBUSERNAME : Your DD Username 
+
+DBUSERNAME : Your DB Username 
+
 DBPASSWORD : Your DB Password 
+
 DBHOST : Your DB Host like localhost etc. 
 
 After you have updated these values, save the file.
@@ -60,7 +63,7 @@ Now come back to dataproject folder where you can see manage.py. Run this comman
 ```bash
 python manage.py migrate
 ```
-This will create your database with necessary tables as well as Union and Region Data. 
+This will add necessary tables. 
 
 ### INSERTING DATA INTO DATABASE
 
@@ -78,8 +81,6 @@ If you want to check the database, you can create a superuser and login into dja
 python manage.py createsuperuser
 ```
 
-Go to the URL : http://127.0.0.1:8000/admin/  and use your credentials to log in. 
-
 ### LIVE PROJECT 
 
 Now everything is set up, you can view the project live by running the following command 
@@ -88,6 +89,10 @@ Now everything is set up, you can view the project live by running the following
 python manage.py runserver
 ```
 Go to the URL : http://127.0.0.1:8000/  to view the project
+
+To Log In as Admin
+
+Go to the URL : http://127.0.0.1:8000/admin/  and use your credentials to log in. 
 
 You can stop the server by pressing Ctrl + C 
 
