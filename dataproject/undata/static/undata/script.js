@@ -189,6 +189,8 @@ function problem4Chart() {
 
   var url = "prob4response?year=" + yearValue + "&&group=" + groupValue;
 
+  var endYear = parseInt(yearValue) + 4;
+
   fetch(url)
     .then(response => {
       return response.json();
@@ -225,7 +227,12 @@ function problem4Chart() {
       }
 
       var titleText =
-        groupValue + " Countries Population in the Year " + yearValue;
+        groupValue +
+        " Countries Population During the Year(s) " +
+        yearValue +
+        "-" +
+        endYear +
+        "";
 
       Highcharts.chart("container", {
         chart: {
