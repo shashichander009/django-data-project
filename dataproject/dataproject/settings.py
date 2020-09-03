@@ -77,6 +77,7 @@ WSGI_APPLICATION = 'dataproject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+
 DATABASES = {
     # 'default': {
     #     'ENGINE': 'django.db.backends.sqlite3',
@@ -85,9 +86,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': f'{os.getenv("DATABASE")}',
-        'USER': f'{os.getenv("USERNAME")}',
-        'PASSWORD': f'{os.getenv("PASSWORD")}',
-        'HOST': '127.0.0.1',
+        'USER': f'{os.getenv("DBUSERNAME")}',
+        'PASSWORD': f'{os.getenv("DBPASSWORD")}',
+        'HOST': f'{os.getenv("DBHOST")}',
         'PORT': '5432',
     }
 }

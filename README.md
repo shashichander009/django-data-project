@@ -35,19 +35,27 @@ pip install -r requirements.txt
 
 ### DATABASE SETTING UP
 
-Create a postgres Database 
-
-Once you are done, go to the dataproject directory where you can see manage.py
+Go to the dataproject directory where you can see manage.py
 
 Find the .env file. 
 
-Add your database credentials here by updating the values of these. 
+Add your database credentials here by updating the values of these values 
 
-Write your Database name in DATABASE and update the username and password. 
+DATABASE : Write your DB Name here 
+DBUSERNAME : Your DD Username 
+DBPASSWORD : Your DB Password 
+DBHOST : Your DB Host like localhost etc. 
 
 After you have updated these values, save the file.
 
-Now, run the following command
+Now, go to the helpers folder and run the following command
+
+```bash
+python create_db
+```
+This will create the database if it is not present already. 
+
+Now come back to dataproject folder where you can see manage.py. Run this command
 
 ```bash
 python manage.py migrate
@@ -62,6 +70,16 @@ Now run the following command, it will add data into your database. Please note 
 python manage.py insertdata
 ```
 
+### ADMIN STEP UP 
+
+If you want to check the database, you can create a superuser and login into django admin 
+
+```bash
+python manage.py createsuperuser
+```
+
+Go to the URL : http://127.0.0.1:8000/admin/  and use your credentials to log in. 
+
 ### LIVE PROJECT 
 
 Now everything is set up, you can view the project live by running the following command 
@@ -73,16 +91,14 @@ Go to the URL : http://127.0.0.1:8000/  to view the project
 
 You can stop the server by pressing Ctrl + C 
 
-### OPTIONAL STEP
+### DROP DATABASE
 
-If you want to check the database, you can create a superuser and login into django admin 
+After you are done with checking the project, go to the helpers folder and run this command 
 
 ```bash
-python manage.py createsuperuser
+python drop_db
 ```
-
-Go to the URL : http://127.0.0.1:8000/admin/  and use your credentials to log in. 
-
+This will remove the database. 
 
 Thank you
 
