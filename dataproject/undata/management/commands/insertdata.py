@@ -72,6 +72,7 @@ class Command(BaseCommand):
         regionsize = RegionData.objects.all().count()
 
         if not regionsize:
+            regiondatalist = []
             with open('undata/rawdata/data.csv', 'r') as csv_file:
                 csv_reader = csv.reader(csv_file)
                 next(csv_reader)
@@ -81,8 +82,10 @@ class Command(BaseCommand):
                     regiondata.code = line[1]
                     regiondata.year = line[2]
                     regiondata.population = line[3]
-                    regiondata.save()
-                print("Region Data Saved")
+                    regiondatalist.append(regiondata)
+
+            RegionData.objects.bulk_create(regiondatalist)
+            print("Region Data Saved")
 
         else:
             print("Region Data Already Copied")
