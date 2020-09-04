@@ -90,11 +90,11 @@ Now everything is set up, you can view the project live by running the following
 python manage.py runserver
 ```
 
-Go to the URL : http://127.0.0.1:8000/ to view the project
+Go to the URL : [http://127.0.0.1:8000/](http://127.0.0.1:8000/) to view the project
 
 To Log In as Admin
 
-Go to the URL : http://127.0.0.1:8000/admin/ and use your credentials to log in.
+Go to the URL : [http://127.0.0.1:8000/admin](http://127.0.0.1:8000/admin) and use your credentials to log in.
 
 You can stop the server by pressing Ctrl + C
 
