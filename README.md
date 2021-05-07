@@ -108,4 +108,14 @@ python drop_db.py
 
 This will remove the database.
 
+## Screenshots
+
+### Problem 2
+
+![Problem 2](screenshots/problem_2.png?raw=true "Problem 2")
+
+### Problem 4
+
+![Problem 4](screenshots/problem_1.png?raw=true "Problem 4")
+
 Thank you
