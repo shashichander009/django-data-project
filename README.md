@@ -118,4 +118,8 @@ This will remove the database.
 
 ![Problem 4](screenshots/problem_1.png?raw=true "Problem 4")
 
+### Database
+
+![Database](screenshots/database.png?raw=true "Database")
+
 Thank you
